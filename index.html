@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<script src="vendor/phaser.min.js"></script>
+		<script src="js/boot.js"></script>
+		<script src="js/preload.js"></script>
+		<script src="js/intro.js"></script>
+		<script src="js/gametitle.js"></script>
+		<script src="js/main.js"></script>
+		<script src="js/gameover.js"></script>
+
+		<style>
+			body{margin: 0}
+		</style>
+
+		<script>
+			(function() {
+				// PUT DIMENSIONS IN HERE
+				var game = new Phaser.Game(800, 400, Phaser.AUTO, "game");
+				
+				game.state.add("Boot", Boot);	
+				game.state.add("Preload", Preload);
+				game.state.add("Intro", Intro);
+				game.state.add("GameTitle", GameTitle);
+				game.state.add("Main", Main);
+				game.state.add("GameOver", GameOver);
+
+				game.state.start("Boot");
+			})();
+
+		</script>
+	</head>
+	<body>
+	</body>
+</html>
+
