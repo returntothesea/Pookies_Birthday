@@ -5,7 +5,7 @@ helpers = {
 
 	addForwardArrow: function(game) {
 		var style = { font: "45px Press Start 2P", fill: "#ddd", align: "center" };
-		text = game.add.text(game.world.width - 50, game.world.height - 50, ">", style);
+		text = game.add.text(game.world.width - 50, game.world.height - 55, ">", style);
 		text.anchor.setTo(0.5);
 		
 		this.blink(game, text);
@@ -13,7 +13,7 @@ helpers = {
 
 	addBackArrow: function(game) {
 		var style = { font: "15px Press Start 2P", fill: "#ddd", align: "center" };
-		text = game.add.text(30, game.world.height - 55, "< restart", style);
+		text = game.add.text(30, game.world.height - 50, "< restart", style);
 
 
 		this.blink(game, text);

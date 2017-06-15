@@ -10,6 +10,8 @@ Main.prototype = {
 		this.famSetup();
 		this.balloonSetup();
 
+		this.tipTextSetup();
+
 		// Inputs for player walking
 		
 		this.game.input.onDown.add(this.walk, this);
@@ -23,6 +25,18 @@ Main.prototype = {
 		// Check for flag overlap
 		this.game.physics.arcade.collide(player, flag, this.touchFlag, null, this);
 
+	},
+
+	tipTextSetup: function() {
+		var style = { font: "15px Press Start 2P", fill: "#ddd", align: "center", stroke: '#444', strokeThickness: '2' };
+		text = this.game.add.text(this.game.world.centerX, this.game.world.height - 55, 'press and hold the screen to make Pookie walk >', style);
+		text.anchor.set(0.5);
+		this.game.input.onDown.add(this.removeTip, this);
+	},
+
+	removeTip: function() {
+		text.kill();
+		this.game.input.onDown.remove(this.removeTip, this);
 	},
 
 	musicSetup: function() {
@@ -66,7 +80,7 @@ Main.prototype = {
 
 		// Animation for walking right and idling
 		player.animations.add('right', [1, 2, 3, 2, 1, 4, 5, 4], 10, true);
-		player.animations.add('idle', [6, 0, 7, 0], 3.4, true);
+		player.animations.add('idle', [6, 0, 7, 0], 3.2, true);
 
 		player.animations.play('idle');
 	},
@@ -74,11 +88,11 @@ Main.prototype = {
 	famSetup: function() {
 		// Sprites and animations for the fam
 		scotty = this.game.add.sprite(652, this.game.world.height - 213, 'scotty');
-		scotty.animations.add('idle', [0, 1, 2, 1], 3.2, true);
+		scotty.animations.add('idle', [0, 1, 2, 1], 3, true);
 		emma = this.game.add.sprite(750, this.game.world.height - 204, 'emma');
-		emma.animations.add('idle', [0, 1, 2, 1], 3.6, true);
+		emma.animations.add('idle', [0, 1, 2, 1], 3.4, true);
 		goose = this.game.add.sprite(730, this.game.world.height - 159, 'goose');
-		goose.animations.add('idle', [0, 1, 2, 1], 4, true);
+		goose.animations.add('idle', [0, 1, 2, 1], 3.8, true);
 
 		scotty.animations.play('idle');
 		emma.animations.play('idle');
@@ -87,11 +101,11 @@ Main.prototype = {
 
 	balloonSetup: function() {
 		b1 = this.game.add.sprite(679, this.game.world.height - 256, 'red-balloon');
-		b1.animations.add('go', [0, 1, 0, 2], 1.2, true);
+		b1.animations.add('go', [0, 1, 0, 2], 1.5, true);
 		b2 = this.game.add.sprite(718, this.game.world.height - 202, 'green-balloon');
-		b2.animations.add('go', [0, 1, 0, 2], 1.4, true);
+		b2.animations.add('go', [0, 1, 0, 2], 1.7, true);
 		b3 = this.game.add.sprite(735, this.game.world.height - 250, 'blue-balloon');
-		b3.animations.add('go', [0, 1, 0, 2], 1.5, true);
+		b3.animations.add('go', [0, 1, 0, 2], 1.9, true);
 		
 		b1.animations.play('go');
 		b2.animations.play('go');
@@ -118,7 +132,7 @@ Main.prototype = {
 	},
 
 	walk: function() {
-		player.body.velocity.x = 130;
+		player.body.velocity.x = 110;
 		player.animations.play('right');
 	},
 
