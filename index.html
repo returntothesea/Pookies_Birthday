@@ -19,6 +19,7 @@
 			(function() {
 				// PUT DIMENSIONS IN HERE
 				var game = new Phaser.Game(800, 400, Phaser.CANVAS, "game");
+				// var game = new Phaser.Game(window.innerWidth * window.devicePixelRatio, window.innerHeight * devicePixelRatio, Phaser.CANVAS, "game");
 				
 				game.state.add("Boot", Boot);	
 				game.state.add("Preload", Preload);
